@@ -197,6 +197,14 @@ All critical system actions generate audit events.
 
 ---
 
+### Why This Project Exists
+
+This project was built to model how regulated crypto exchanges monitor on-chain activity, enforce compliance workflows, and maintain forensic-grade audit trails without relying on blockchain node integrations.
+
+The focus is on backend correctness, explainability, and security — not trading or UI features.
+
+---
+
 ## Disclaimer
 
 This project is for educational and architectural demonstration purposes only.

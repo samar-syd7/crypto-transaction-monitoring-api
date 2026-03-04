@@ -1,8 +1,10 @@
 # Crypto Transaction Monitoring & Compliance API
 
-An internal backend service for monitoring crypto transactions, performing deterministic risk scoring, escalating high-risk activity to compliance workflows, and maintaining immutable audit logs.
+Backend compliance infrastructure designed to monitor cryptocurrency transactions, apply deterministic risk scoring, and escalate high-risk activity to analyst workflows.
 
-This system mirrors compliance and AML infrastructure used in regulated crypto exchanges and fintech platforms, with a strong emphasis on explainability, auditability, and least-privilege access control.
+The system models architectural patterns commonly used in regulated crypto exchanges, including transaction monitoring pipelines, compliance case management, and immutable audit logging.
+
+The focus is on backend correctness, explainability, and operational auditability rather than blockchain node integration.
 
 ---
 

@@ -38,6 +38,73 @@ Compliance Workflow
 Immutable Audit Log
 ```
 
+---
+
+## System Guarantees
+
+The system enforces several invariants required for compliance infrastructure:
+
+- **Deterministic risk scoring** — identical inputs always produce identical results.
+- **Immutable audit events** — compliance actions cannot be modified or deleted once recorded.
+- **Idempotent transaction ingestion** — duplicate blockchain events cannot create duplicate records due to database-level constraints.
+- **Least-privilege service authentication** — only authorized services can ingest transactions or access compliance workflows.
+
+---
+
+## Core Entities
+
+### Transaction
+Represents a decoded blockchain transaction ingested from internal pipelines.
+
+Fields:
+- blockchain
+- tx_hash
+- from_address
+- to_address
+- amount
+- asset
+- block_number
+- tx_timestamp
+- status
+
+---
+
+### RiskAssessment
+Represents the deterministic risk evaluation result for a transaction.
+
+Fields:
+- transaction
+- risk_score
+- risk_level
+- triggered_rules
+- assessed_at
+
+---
+
+### ComplianceCase
+Represents a manual compliance investigation triggered by high-risk activity.
+
+Fields:
+- transaction
+- assigned_to
+- status
+- notes
+- created_at
+- closed_at
+
+---
+
+### AuditEvent
+Represents an append-only record of system activity for forensic traceability.
+
+Fields:
+- actor
+- action
+- timestamp
+- metadata
+
+---
+
 ### Scope Boundaries
 
 - Internal backend service only  

@@ -248,7 +248,7 @@ All critical system actions generate audit events.
 
 ---
 
-## Design Principles
+## Design Philosophy 
 
 - Deterministic and explainable logic
 - Least-privilege access

@@ -40,6 +40,17 @@ Immutable Audit Log
 
 ---
 
+## Transaction Processing Flow
+
+1. Internal ingestion pipeline submits decoded blockchain transaction.
+2. Transaction API validates schema and persists the transaction.
+3. Risk engine evaluates deterministic compliance rules.
+4. If risk level is HIGH, a compliance case is automatically created.
+5. All actions emit immutable audit events.
+
+   
+---
+
 ## System Guarantees
 
 The system enforces several invariants required for compliance infrastructure:
@@ -254,6 +265,43 @@ All critical system actions generate audit events.
 - Least-privilege access
 - Immutable audit trail
 - Compliance-first architecture
+
+---
+
+## Data Integrity Guarantees
+
+The system enforces several integrity guarantees:
+
+- Unique transaction constraint `(tx_hash, blockchain)` prevents duplicate ingestion.
+- Risk assessments are deterministic and reproducible.
+- Compliance case lifecycle changes generate immutable audit events.
+- Audit records are append-only and protected from modification.
+
+---
+
+## Failure Scenarios Considered
+
+### Duplicate Transaction Delivery
+Blockchain ingestion pipelines may deliver duplicate events.
+
+Mitigation:
+Database-level uniqueness constraints prevent duplicate transaction records.
+
+---
+
+### Risk Engine Failure
+Risk evaluation may fail due to unexpected rule conditions.
+
+Mitigation:
+Transactions remain persisted and can be reprocessed safely.
+
+---
+
+### Unauthorized Service Access
+Misconfigured services could attempt to ingest transactions.
+
+Mitigation:
+JWT-based service authentication ensures only authorized internal services can interact with the API.
 
 ---
 

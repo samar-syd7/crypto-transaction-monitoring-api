@@ -1,10 +1,17 @@
 # Crypto Transaction Monitoring & Compliance API
 
-Backend compliance infrastructure designed to monitor cryptocurrency transactions, apply deterministic risk scoring, and escalate high-risk activity to analyst workflows.
+Backend infrastructure modeling a **Transaction Monitoring System (TMS)** used in regulated crypto exchanges for:
 
-The system models architectural patterns commonly used in regulated crypto exchanges, including transaction monitoring pipelines, compliance case management, and immutable audit logging.
+- Anti-Money Laundering (AML)
+- Fraud detection
+- Compliance case management
+- Forensic audit logging
 
-The focus is on backend correctness, explainability, and operational auditability rather than blockchain node integration.
+Designed as a **deterministic, event-driven backend system** prioritizing:
+- Idempotency
+- Auditability
+- Transaction integrity
+- Explainable risk evaluation
 
 ---
 
@@ -302,6 +309,17 @@ Misconfigured services could attempt to ingest transactions.
 
 Mitigation:
 JWT-based service authentication ensures only authorized internal services can interact with the API.
+
+---
+
+## Key Engineering Highlights
+
+- Designed **idempotent ingestion pipeline** preventing duplicate transaction processing
+- Implemented **deterministic risk engine** (reproducible compliance decisions)
+- Built **append-only audit logging system** for forensic traceability
+- Modeled **compliance case lifecycle workflows** (analyst-driven investigation)
+- Enforced **database-level integrity constraints** for correctness under concurrency
+- Implemented **stateless service-to-service authentication (JWT)**
 
 ---
 
